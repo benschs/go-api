@@ -1,0 +1,34 @@
+- name: "list messages"
+  func: "ListMessages"
+  method: "GET"
+  uri: "/api/messages"
+  headers:
+    - "Authorization"
+    - "Content-Type"
+
+- name: "get single message"
+  func: "GetMessage"
+  method: "GET"
+  uri: "/api/messages/{id}"
+  params: 
+    id: "int"
+
+- name: "create message"
+  func: "CreateMessage"
+  method: "POST"
+  uri: "/api/messages"
+  body: 
+    isJSON: true
+    jsonStructName: "basic.Message"
+
+- name: "upload document"
+  func: "UploadDocument"
+  method: "POST"
+  uri: "/api/document"
+  body: 
+    isMultipart: true
+    forms:
+      - name: "document"
+        isFile: true
+      - name: "name"
+        isFile: false
