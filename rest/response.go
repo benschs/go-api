@@ -7,6 +7,7 @@ import (
 
 type IResponseWriter interface {
 	Write(w http.ResponseWriter, content interface{}) error
+	WriteError(w http.ResponseWriter, content interface{}) error
 }
 
 // StdJSONWriter converts the content to JSON and writes it.
@@ -35,4 +36,8 @@ func (r *StdJSONWriter) Write(w http.ResponseWriter, content interface{}) error 
 	w.Header().Set("Content-Type", "application/json")
 	_, err = w.Write(bytes)
 	return err
+}
+
+func (r *StdJSONWriter) WriteError(w http.ResponseWriter, content interface{}) error {
+	return r.Write(w, content)
 }

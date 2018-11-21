@@ -114,11 +114,10 @@ func (c *Controller) HandleRequest(request Request) http.HandlerFunc {
 
 			c.logger.Printf("module error response to '%s': %v\n", request.Name, e)
 
-			// responseError := response.CreateError(1, e)
-			fmt.Fprintf(w, "ERROR: %v", e)
+			c.rw.WriteError(w, e)
 			return
 		}
-		// fmt.Fprintf(w, "OK: %v", result)
+
 		c.rw.Write(w, result)
 	}
 }
