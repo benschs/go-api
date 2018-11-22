@@ -19,7 +19,7 @@
   uri: "/api/messages"
   body: 
     isJSON: true
-    jsonStructName: "basic.Message"
+    jsonStructName: "main.Message"
 
 - name: "upload document"
   func: "UploadDocument"
